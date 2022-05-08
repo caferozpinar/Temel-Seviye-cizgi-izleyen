@@ -5,11 +5,13 @@ void Pid(){
   {
     uint16_t position = qtr.readLineWhite(sensor);
     error = position - 3500;
+    //siyah zemin üzerinde beyaz çizgi
   }
   else 
   {
     uint16_t position = qtr.readLineBlack(sensor);
     error = position - 3500;
+    //beyaz zemin üzerinde siyah çizgi
   }
   
   

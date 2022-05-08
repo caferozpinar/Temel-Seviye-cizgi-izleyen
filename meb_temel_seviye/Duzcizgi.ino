@@ -3,10 +3,10 @@ void Duz_Cizgi() {
   if (zemin)
   {
     if (sensor[0] < 300 && sensor[1] < 300 && sensor[2] < 300 && sensor[3] < 300 && sensor[4] < 300 && sensor[5] < 300 && sensor[6] < 300 && sensor[7] < 300 ) {
-
+      //düz çizgi görünce en kenardaki sensörler boşa çıkana kadar düz gider
       while (1) {
         PidRead();
-        MotorSpeed(70, 70);
+        MotorSpeed((leftBaseSpeed * 1) , (rightBaseSpeed * 1));
         if (sensor[0] > 600 && sensor[7] > 600) {
           break;
         }
@@ -16,10 +16,10 @@ void Duz_Cizgi() {
   else
   {
     if (sensor[0] > 600 && sensor[1] > 600 && sensor[2] > 600 && sensor[3] > 600 && sensor[4] > 600 && sensor[5] > 600 && sensor[6] > 600 && sensor[7] > 600 ) {
-
+      //düz çizgi görünce en kenardaki sensörler boşa çıkana kadar düz gider
       while (1) {
         PidRead();
-        MotorSpeed(70, 70);
+        MotorSpeed((leftBaseSpeed * 1) , (rightBaseSpeed * 1));
         if (sensor[0] < 300 && sensor[7] < 300) {
           break;
         }

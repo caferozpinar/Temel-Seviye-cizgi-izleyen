@@ -4,8 +4,9 @@ void Kalibrasyon() {
     qtr.calibrate();
   }
 }
-void Kalibre() {
 
+void Kalibre() {
+  //otomatik kalibre !! tekerler kaydığı için düzgün çalışmıyor.
   //  Serial.println(error);
   int left = 0, right = 0;
   for (int calibrationCase = 0; calibrationCase < 7; calibrationCase++) {

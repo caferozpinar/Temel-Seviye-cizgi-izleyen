@@ -2,6 +2,7 @@
 
 QTRSensors qtr;
 #define sensorSayisi  8
+//qtrdeki sensor sayısı
 #define zemin 0
 /*
   * siyah zemin "1"
@@ -13,8 +14,10 @@ int durum[8];
 
 #define Kp 0.082
 #define Kd 0.885
-#define rightBaseSpeed 70//150
-#define leftBaseSpeed 70//150
+//PID çarpanları
+
+#define rightBaseSpeed 120//120
+#define leftBaseSpeed 120//120
 
 #define rightMotor1 8
 #define rightMotor2 9
@@ -35,10 +38,10 @@ int soldoksan = 0;
 
 
 void setup() {
-  qtr.setTypeAnalog();
+  qtr.setTypeAnalog();//sensor tipi analog
   qtr.setSensorPins((const uint8_t[]) {
     A7, A6, A5, A4, A3, A2, A1, A0
-  }, sensorSayisi);
+  }, sensorSayisi);//sensor pinlleri
   //qtr.setEmitterPin(0);
   Serial.begin(9600);
 
@@ -53,9 +56,9 @@ void setup() {
   digitalWrite(LED_BUILTIN, LOW); delay(120);
   digitalWrite(LED_BUILTIN, HIGH); delay(120);
   digitalWrite(LED_BUILTIN, LOW); delay(120);
-  digitalWrite(LED_BUILTIN, HIGH); delay(1200);
+  digitalWrite(LED_BUILTIN, HIGH); delay(1200);//kalibrasyona başlamadan led yanıp söner ve kalibre süresinde yanık kalır
   Kalibrasyon();
-  digitalWrite(LED_BUILTIN, LOW); delay(120);
+  digitalWrite(LED_BUILTIN, LOW); delay(120);//kalibrasyon bittiğinde yanıp söner ve sönük kalır.
   digitalWrite(LED_BUILTIN, HIGH); delay(120);
   digitalWrite(LED_BUILTIN, LOW); delay(3000);
 
@@ -66,5 +69,6 @@ void loop() {
   Pid();
   Doksan();
   Duz_Cizgi();
-
+  //Kesik_Cizgi();
+  //kesikli çizgi kodu çalışıyor gerektiğinde açılabilir.
 }
